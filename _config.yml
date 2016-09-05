@@ -1,0 +1,24 @@
+# Site settings
+title: Phil's Blog
+header-img: img/home-bg.jpg
+email: fudanzz@gmail.com
+copyright_name: fudanzz
+description: "personal blog site"
+url: "http://yourdomain.com"
+twitter_username: fudanzz
+github_username:  fudanzz
+facebook_username:  fudanzz
+email_username:  fudanzz@gmail.com
+
+# Google Analytics
+# To enable google analytics, uncomment below line with a valid Google Tracking ID
+# google_tracking_id:
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
