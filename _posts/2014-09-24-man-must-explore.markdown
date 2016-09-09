@@ -1,17 +1,21 @@
 ---
 layout:     post
-title:      "Man must explore, and this is exploration at its greatest"
-subtitle:   "Problems look mighty small from 150 miles up"
-date:       2014-09-24 12:00:00
-author:     "Start Bootstrap"
+title:      "OAuth2.0 learning notes"
+subtitle:   ""
+date:       2016-09-09 23:00:00
+author:     "Phil"
 header-img: "img/post-bg-06.jpg"
 ---
 
-<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+<p>OAuth 2.0 is a protocol that allows distinct parties to share information and resources in a secure and reliable manner.</p>
 
-<p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+<p>Strictly speaking, the OAuth 2.0 protocol is actually an authorization protocol and not an authentication protocol.</p>
 
-<p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
+<p>OAuth 2.0 involve two things:</p>
+
+* Allowing a user to log into an application with another account. For example, Pinterest allowing users to log in with their Twitter accounts. This is known as federated identity.
+
+* Allowing one service to access resources on another service on behalf of the user. For example, Adobe accessing your Facebook photos on your behalf. This is known as delegated authority.
 
 <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
 
@@ -39,5 +43,3 @@ header-img: "img/post-bg-06.jpg"
 <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
 
 <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
