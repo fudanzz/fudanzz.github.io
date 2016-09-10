@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "I believe every human has a finite number of heartbeats. I don't intend to waste any of mine."
+title:      "Webpack Tutorial"
 date:       2014-09-18 12:00:00
-author:     "Start Bootstrap"
+author:     "Phil"
 header-img: "img/post-bg-05.jpg"
 ---
 

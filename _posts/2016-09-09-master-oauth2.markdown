@@ -7,8 +7,8 @@ author:     "Phil"
 header-img: "img/post-bg-06.jpg"
 ---
 
-## Overview 
-<p>OAuth 2.0 is a protocol that allows distinct parties to share information and resources in a secure and reliable manner.</p>
+## Overview
+<p>OAuth 2.0 is a protocol that allows distinct parties to share information and resources in a secure and reliable manner.</p>   
 
 <p>Strictly speaking, the OAuth 2.0 protocol is actually an authorization protocol and not an authentication protocol.</p>
 
