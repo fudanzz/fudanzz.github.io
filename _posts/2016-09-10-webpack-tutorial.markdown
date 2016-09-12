@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Webpack Tutorial1"
-date:       2014-09-18 12:00:00
+title:      "Webpack Tutorial"
+date:       2016-09-11 12:00:00
 author:     "Phil"
 header-img: "img/post-bg-05.jpg"
 ---
