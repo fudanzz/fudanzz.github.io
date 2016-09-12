@@ -1,9 +1,8 @@
 ---
 layout:     post
-title:      "Science has not yet mastered prophecy"
-subtitle:   "We predict too much for the next year and yet far too little for the next ten."
-date:       2014-08-24 12:00:00
-author:     "Start Bootstrap"
+title:      "learning react"
+date:       2016-09-12 12:00:00
+author:     "Phil"
 header-img: "img/post-bg-04.jpg"
 ---
 
