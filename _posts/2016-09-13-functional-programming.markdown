@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Functional Programming"
-date:       2016-09-13 12:00:00
+date:       2016-09-13 08:00:00
 author:     "Phil"
 header-img: "img/post-bg-02.jpg"
 ---
