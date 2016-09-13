@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Mastering OAuth2.0 reading notes"
+title:      "OAuth2.0 reading notes"
 subtitle:   ""
 date:       2016-09-09 23:00:00
 author:     "Phil"
