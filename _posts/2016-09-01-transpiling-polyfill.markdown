@@ -6,37 +6,34 @@ author:     "Phil"
 header-img: "img/post-bg-01.jpg"
 ---
 
-<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+## Overview
+在我们学习前端技术活着框架的时候，**Polyfill** (aka shims) 和 **Transpiler**
+是两个我们经常会碰到的词。对于非native speaker而言，单看字面意思还是蛮难区分的 (某种墙面填料品牌叫Polyfill)。比较实际的办法，还是从具体使用上区分.
 
-<p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+首先使用polyfill 和transpiler的背景是大致一样的，即当我们想使用新的语言特性，比如使用ES6的新语法或者API, 但是目标运行环境当前尚未支持的时候，我们可以有下面两种选择：
 
-<p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
+* Polyfill: 模拟出类似的API，达到旧的目标环境支持新的API的效果
+* Transpiler: 将你的代码转换成目标环境支持的，可以运行的的代码
 
-<p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
+## Transpiler
 
-<p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
+举个例子，比方说你想使用es6的语法，比如箭头函数，如下
+但是目标环境（比如说浏览器）当前还不支持es6的语法，你可以使用转换器，把你的大妈
 
-<h2 class="section-heading">The Final Frontier</h2>
+    [1,2,3].map(n => n + 1);
+you will get
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+    [1,2,3].map(function(n) {
+    return n + 1;
+    });
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+## Polyfill
 
-<blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
+并不是所有的es6的特性都需要transpiler, 有些时候你需要。
+举个例子
 
-<p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
+## Summary
 
-<h2 class="section-heading">Reaching for the Stars</h2>
+>A polyfill will emulate certain APIs, whereas a transpiler will convert your code so it can be run with an older system
 
-<p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-<a href="#">
-    <img src="{{ site.baseurl }}/img/post-sample-image.jpg" alt="Post Sample Image">
-</a>
-<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-<p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-<p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+在前端技术日新月异的大背景下，已经成为新常态。当然你也可以等到浏览器全部支持这些新特性的时候，但是可能你会发现，
