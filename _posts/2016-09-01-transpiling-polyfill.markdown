@@ -7,7 +7,7 @@ header-img: "img/post-bg-01.jpg"
 ---
 
 ## Overview
-在我们学习前端技术活着框架的时候，**Polyfill** (aka shims) 和 **Transpiler**
+在我们学习前端技术或者框架的时候，**Polyfill** (aka shims) 和 **Transpiler**
 是两个我们经常会碰到的词。对于非native speaker而言，单看字面意思还是蛮难区分的 (某种墙面填料品牌叫Polyfill)。比较实际的办法，还是从具体使用上区分.
 
 首先使用polyfill 和transpiler的背景是大致一样的，即当我们想使用新的语言特性，比如使用ES6的新语法或者API, 但是目标运行环境当前尚未支持的时候，我们可以有下面两种选择：
@@ -20,11 +20,13 @@ header-img: "img/post-bg-01.jpg"
 比方说你想使用ES6的语法，例如箭头函数，但是目标环境（比如浏览器）当前还不支持该ES6的语法，你旧可以使用转换编译器(比如Babel)，把如下的箭头函数代码：
 
     [1,2,3].map(n => n + 1);
-转换为如下代码
+
+转换为如下代码：
 
     [1,2,3].map(function(n) {
     return n + 1;
     });
+
 从而达到你的代码能够在旧的运行环境执行的效果。
 
 ## Polyfill
