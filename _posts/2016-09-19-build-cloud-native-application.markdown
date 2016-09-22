@@ -32,6 +32,7 @@ header-img: "img/post-bg-01.jpg"
 * 技术改变  （微服务的方式，容器技术等等，去soa中心化）
 
 ## Key Technology & Pattern
+
 ### 微服务架构
 
 如何从单一服务到微服务：
@@ -56,7 +57,7 @@ header-img: "img/post-bg-01.jpg"
 
 ## 参考链接
 
-1. http://www.ibm.com/developerworks/websphere/techjournal/1404_brown/1404_brown.html
+1. (http://www.ibm.com/developerworks/websphere/techjournal/1404_brown/1404_brown.html)
 
 2. https://www.oreilly.com/ideas/migrating-to-cloud-native-application-architectures
 
