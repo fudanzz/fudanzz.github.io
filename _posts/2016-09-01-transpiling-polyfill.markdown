@@ -7,7 +7,7 @@ header-img: "img/post-bg-01.jpg"
 ---
 
 ## Overview
-<p>在我们学习前端技术或者框架的时候，**Polyfill** (aka shims) 和 **Transpiler**
+<p>在我们学习前端技术或者框架的时候，Polyfill(aka shims) 和 Transpiler
 是两个我们经常会碰到的词。对于非native speaker而言，单看字面意思还是蛮难区分的 (某种墙面填料品牌叫Polyfill)。比较实际的办法，还是从具体使用上区分.</p>
 
 首先使用polyfill 和transpiler的背景是大致一样的，即当我们想使用新的语言特性，比如使用ES6的新语法或者API, 但是目标运行环境当前尚未支持的时候，我们可以有下面两种选择：
