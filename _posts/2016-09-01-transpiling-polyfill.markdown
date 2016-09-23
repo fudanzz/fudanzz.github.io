@@ -17,7 +17,7 @@ header-img: "img/post-bg-01.jpg"
 
 ## Transpiler
 
-比方说你想使用ES6的语法，例如箭头函数，但是目标环境（比如浏览器）当前还不支持该ES6的语法，你旧可以使用转换编译器(比如Babel)，把如下的箭头函数：
+比方说你想使用ES6的语法，例如箭头函数，但是目标环境（比如浏览器）当前还不支持该ES6的语法，你可以选择使用转换编译器(比如Babel)，把如下的箭头函数：
 
     [1,2,3].map(n => n + 1);
 
@@ -31,11 +31,21 @@ header-img: "img/post-bg-01.jpg"
 
 ## Polyfill
 
-并不是所有的es6的特性都需要transpiler, 有些时候你需要。
-举个例子
+并不是所有的es6的特性都需要transpiler, 毕竟语法容易转换，新的API则不是那么容易，这里我们需要用到Polyfill.
+
+比如使用最新的ES6 Promise API， 我们可以通过npm安装:
+
+    npm install es6-promise-polyfill
+
+然后就可以在代码里使用了：
+
+    var Promise = require('es6-promise-polyfill').Promise;
+    var promise = new Promise(...);
+
+
 
 ## Summary
 
 >A polyfill will emulate certain APIs, whereas a transpiler will convert your code so it can be run with an older system
 
-在前端技术日新月异的大背景下，已经成为新常态。当然你也可以等到浏览器全部支持这些新特性的时候，但是可能你会发现，
+在前端技术日新月异的大背景下，通过polyfill或者transpiler的方式，不断学习的新的规范和语法，已经成为新常态。当然你也可以等到浏览器全部支持这些新特性的时候，但是可能你会发现你已经掉队了。
