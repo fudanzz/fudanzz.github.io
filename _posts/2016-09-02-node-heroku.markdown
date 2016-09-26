@@ -6,37 +6,87 @@ author:     "Phil"
 header-img: "img/post-bg-01.jpg"
 ---
 
-<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+### Overview
 
-<p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+Heroku是业界流行的PAAS平台，你可以在上面部署运行java,node等程序，本文主要介绍如何在上面运行node程序。
 
-<p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
+### Setup Your Heroku
+* 注册一个免费的Heroku账号
+* 安装Heroku toolbelt客户端
 
-<p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
+验证：Heroku登录
 
-<p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
+    heroku login
 
-<h2 class="section-heading">The Final Frontier</h2>
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+### Build Node application
+利用express搭建一个最简单的REST服务：
 
-<p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+    npm init
+    npm install --save express
 
-<blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
+创建一个server.js（详细代码见参考链接）
 
-<p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
+    var server = app.listen(process.env.PORT || 3000, function () {
+    console.log('listening on port %d', server.address().port);
+    });
 
-<h2 class="section-heading">Reaching for the Stars</h2>
 
-<p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
+创建一个Procfile文件：
 
-<a href="#">
-    <img src="{{ site.baseurl }}/img/post-sample-image.jpg" alt="Post Sample Image">
-</a>
-<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+    web: node server.js
 
-<p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
+验证：启动REST服务
 
-<p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
+### Deploy to Heroku
 
-<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+1. 初始化本地git库
+
+
+    git init
+    git add .
+    git commit -m 'first commit'
+
+
+2. 创建Heroku应用
+
+
+    heroku create
+    Creating app... done, ⬢ stormy-ravine-93117
+
+
+3. 添加Heroku远程Git
+
+
+     heroku git:remote -a stormy-ravine-93117
+
+
+4. 部署应用
+
+
+     git push heroku master
+
+验证：
+
+     heroku open
+
+### 附录1
+如果你的node应用采用Gulp打包，你也可以通过一下命令于Heroku集成：
+
+    heroku create --buildpack https://github.com/timdp/heroku-buildpack-nodejs-gulp.git
+    heroku config:set NODE_ENV=production
+同时添加一个production task在你的build文件中：
+
+    gulp.task('heroku:production', function () {
+    console.log('production build');
+    })
+
+其它步骤跟上面是一样的。
+
+### 附录2
+
+如果你的node应用基于strongloop框架，你需要修改server.js里面的默认端口监听：
+
+    return app.listen(process.env.PORT || 5000, function () {...
+
+### 参考链接
