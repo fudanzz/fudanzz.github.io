@@ -40,28 +40,28 @@ Heroku是业界流行的PAAS平台，你可以在上面部署运行java,node等�
 
 ### Deploy to Heroku
 
-1. 初始化本地git库
-
+初始化本地git库
 
     git init
     git add .
     git commit -m 'first commit'
 
 
-2. 创建Heroku应用
+创建Heroku应用
 
 
     heroku create
+
     Creating app... done, ⬢ stormy-ravine-93117
 
 
-3. 添加Heroku远程Git
+添加Heroku远程Git
 
 
      heroku git:remote -a stormy-ravine-93117
 
 
-4. 部署应用
+部署应用
 
 
      git push heroku master
@@ -71,10 +71,11 @@ Heroku是业界流行的PAAS平台，你可以在上面部署运行java,node等�
      heroku open
 
 ### 附录1
-如果你的node应用采用Gulp打包，你也可以通过一下命令于Heroku集成：
+如果你的node应用采用Gulp打包，你也可以通过以下命令于Heroku集成：
 
     heroku create --buildpack https://github.com/timdp/heroku-buildpack-nodejs-gulp.git
     heroku config:set NODE_ENV=production
+
 同时添加一个production task在你的build文件中：
 
     gulp.task('heroku:production', function () {
@@ -90,3 +91,7 @@ Heroku是业界流行的PAAS平台，你可以在上面部署运行java,node等�
     return app.listen(process.env.PORT || 5000, function () {...
 
 ### 参考链接
+
+1. <a href="https://github.com/fudanzz/nodeapp1">node application build wiht gulp and  heroku </a>
+
+2. <a href="https://github.com/fudanzz/nodeapp2">node application based on strongloop with heroku Deploy</a>
