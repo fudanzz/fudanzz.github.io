@@ -44,3 +44,12 @@ However, here are the cons:
 * Short-term access only: Since the client is untrusted, they cannot store keys for long-term use. Because of this, the user will have to reauthenticate and regrant access more often than with a trusted client.
 
 ## Authorization code grant(server side flow)
+
+
+
+resource owner password : (end user credential is provided)
+
+user provide credential to client app, client app request the access token on behalf of end user
+
+client credential: (no end user is involved)
+client app request the token directly
