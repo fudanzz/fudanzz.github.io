@@ -47,19 +47,13 @@ there are preflight request under DELETE,PUT request
 —>for server side response:
 
 
-var handleCors = function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:1111');
-  if (isPreflight(req)) {
-
-
-
-
-
-
-res.set('Access-Control-Allow-Methods', 'GET, DELETE');
-  res.status(204).end();
-  return;
-}
+    var handleCors = function(req, res, next) {
+       res.set('Access-Control-Allow-Origin', 'http://localhost:1111');
+     if (isPreflight(req)) {
+    res.set('Access-Control-Allow-Methods', 'GET, DELETE');
+      res.status(204).end();
+     return;
+    }
 
 other could trigger preflight options request:  CORS request with customised http headers
 
@@ -70,14 +64,12 @@ other could trigger preflight options request:  CORS request with customised htt
 - The preflight request takes the form of an HTTP OPTIONS method with an Ori-
 - gin and Access-Control-Request-Method header.
 - The server can grant permissions to use certain HTTP methods by using the
-- Access-Control-Allow-Methods header. The server can also grant permission to
-use certain HTTP headers by using the Access-Control-Allow-Headers header.
-- The preflight result cache is a performance optimization that helps reduce the
-number of preflight requests made to a particular endpoint.
+- Access-Control-Allow-Methods header. The server can also grant permission to use certain HTTP headers by using the Access-Control-Allow-Headers header.
+- The preflight result cache is a performance optimization that helps reduce the number of preflight requests made to a particular endpoint.
 
 ■ The Access-Control-Allow-Credentials header can be used in conjunction with XMLHttpRequest’s withCredentials property to include cookies on cross-origin requests.
-■ The Access-Control-Expose-Headers header can be used to expose response headers to the client.
 
+■ The Access-Control-Expose-Headers header can be used to expose response headers to the client.
 
 ### Best Practice
 
@@ -125,6 +117,18 @@ Access-Control-Allow-Methods:
 - – &nbsp;&nbsp;This header indicates which response headers to expose to clients.
 
 - – &nbsp;&nbsp;It’s an optional header that isn’t required for a successful CORS request.
+
+### Simple node server example
+
+    var express = require('express');
+    var app = express();
+
+    app.use(function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', '*');
+         res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With, Content-Type,Accept');
+        next();
+    });
+
 
 ### Helpful website
 
