@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Top Five JavaScript Pattern"
-date:       2016-09-02 12:00:00
+title:      "Understanding CORS"
+date:       2016-10-02 11:00:00
 author:     "Phil"
 header-img: "img/post-bg-01.jpg"
 ---
