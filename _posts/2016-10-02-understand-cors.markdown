@@ -23,10 +23,15 @@ origin=schema+host+port
 so there will be exact value check or * check
 
 CORS is fully supported in the following  browsers:
+
 - Chrome 3+
+
 - Firefox 3.5+
+
 - Safari 4+
+
 - Internet Explorer 10+
+
 - Opera 12+
 
 
@@ -75,48 +80,48 @@ other could trigger preflight options request:  CORS request with customised htt
 
 - Access-Control-Allow-Origin:
 
-    - – &nbsp;&nbsp;Use the * value to allow requests from all origins.
+    – &nbsp;&nbsp;Use the * value to allow requests from all origins.
 
-    - – &nbsp;&nbsp;Use a whitelist to allow only certain origins.
+    – &nbsp;&nbsp;Use a whitelist to allow only certain origins.
 
 - Access-Control-Allow-Credentials:
 
-    - – &nbsp;&nbsp;Setting the value to true allows cookies on requests.
+    – &nbsp;&nbsp;Setting the value to true allows cookies on requests.
 
-    - – &nbsp;&nbsp;Enable cookies only if you’re sure you need them.
+    – &nbsp;&nbsp;Enable cookies only if you’re sure you need them.
 
-    - – &nbsp;&nbsp;If your server does support cookies, be sure to also validate the origin and
+    – &nbsp;&nbsp;If your server does support cookies, be sure to also validate the origin and
 implement CSRF protection.
 
 Access-Control-Allow-Methods:
 
-- – &nbsp;&nbsp;This header only needs to be present on preflight responses.
+– &nbsp;&nbsp;This header only needs to be present on preflight responses.
 
-- – &nbsp;&nbsp;It indicates which HTTP methods are allowed on a URL.
+– &nbsp;&nbsp;It indicates which HTTP methods are allowed on a URL.
 
-- – &nbsp;&nbsp;Common values include HEAD, OPTIONS, GET, POST, PUT, PATCH, and DELETE.
+– &nbsp;&nbsp;Common values include HEAD, OPTIONS, GET, POST, PUT, PATCH, and DELETE.
 
 - Access-Control-Allow-Headers:
 
-- – &nbsp;&nbsp;This header only needs to be present on preflight responses.
+– &nbsp;&nbsp;This header only needs to be present on preflight responses.
 
-- – &nbsp;&nbsp;It indicates which HTTP headers are allowed on a URL.
+– &nbsp;&nbsp;It indicates which HTTP headers are allowed on a URL.
 
-- – &nbsp;&nbsp;Echo the Access-Control-Request-Headers value to get full header support.
+– &nbsp;&nbsp;Echo the Access-Control-Request-Headers value to get full header support.
 
 - Access-Control-Max-Age:
 
-- – &nbsp;&nbsp;This header only needs to be present on preflight responses.
+– &nbsp;&nbsp;This header only needs to be present on preflight responses.
 
-- – &nbsp;&nbsp;It indicates how many seconds to cache preflight requests for.
+– &nbsp;&nbsp;It indicates how many seconds to cache preflight requests for.
 
-- – &nbsp;&nbsp;Browsers may have their own maxAge caps.
+– &nbsp;&nbsp;Browsers may have their own maxAge caps.
 
 - Access-Control-Expose-Headers:
 
-- – &nbsp;&nbsp;This header indicates which response headers to expose to clients.
+– &nbsp;&nbsp;This header indicates which response headers to expose to clients.
 
-- – &nbsp;&nbsp;It’s an optional header that isn’t required for a successful CORS request.
+– &nbsp;&nbsp;It’s an optional header that isn’t required for a successful CORS request.
 
 ### Simple node server example
 
@@ -133,5 +138,7 @@ Access-Control-Allow-Methods:
 ### Helpful website
 
 1, http://test-cors.org/
+
 2, http://enable-cors.org/
+
 3, https://www.html5rocks.com/en/tutorials/cors/
