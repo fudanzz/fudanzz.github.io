@@ -134,3 +134,4 @@ Access-Control-Allow-Methods:
 
 1, http://test-cors.org/
 2, http://enable-cors.org/
+3, https://www.html5rocks.com/en/tutorials/cors/
