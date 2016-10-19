@@ -46,7 +46,6 @@ However, here are the cons:
 ## Authorization code grant(server side flow)
 
 
-
 resource owner password : (end user credential is provided)
 
 user provide credential to client app, client app request the access token on behalf of end user
