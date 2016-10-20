@@ -12,4 +12,6 @@ Heroku是业界流行的PAAS平台，你可以在上面部署运行java,node等�
 
 ### Module Pattern/reveal module pattern
 
+### prototype Pattern
+
 ###
