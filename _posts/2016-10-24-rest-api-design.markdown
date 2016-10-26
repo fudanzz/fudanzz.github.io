@@ -8,14 +8,20 @@ header-img: "img/post-bg-01.jpg"
 
 ### API Overview
 
-Cross-Origin Resource Sharing (CORS) enables web clients to make HTTP requests to servers hosted on different origins. CORS is a unique web technology in that it has both a server-side and a client-side component. The server-side component configures which types of cross-origin requests are allowed, while the client-side component controls how cross-origin requests are made.
+end user:
 
-So when need to enable CORS, we need browser support and server side support
+- product manager:
+- api developer:
+- api tester:
+- api operation:
 
-browser side: browser send request and check if CORS request is valid based on server response.
+design principle
 
-server side: the server responds to the request by setting special CORS-specific headers to indicate that the cross-origin request is allowed.
-
+- don’t surprise your user
+- focus on use cases
+- copy successful APIs
+- REST is not always best
+- focus on developer experice
 ### What is Origin
 
 origin=schema+host+port
