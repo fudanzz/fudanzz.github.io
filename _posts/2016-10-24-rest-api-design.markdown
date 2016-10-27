@@ -8,46 +8,23 @@ header-img: "img/post-bg-01.jpg"
 
 ### API Overview
 
-end user:
 
-- product manager:
-- api developer:
-- api tester:
-- api operation:
+### API Design principle
 
-design principle
-
-- don’t surprise your user
+- don’t surprise your end user
 - focus on use cases
 - copy successful APIs
 - REST is not always best
-- focus on developer experice
-### What is Origin
-
-origin=schema+host+port
-
-so there will be exact value check or * check
-
-CORS is fully supported in the following  browsers:
-
-- Chrome 3+
-
-- Firefox 3.5+
-
-- Safari 4+
-
-- Internet Explorer 10+
-
-- Opera 12+
+- focus on developer experience
 
 
-### Process
+### API Design Process
 
-- The browser sends the Origin header to indicate where a request is coming from.(An origin is defined as the scheme, host, and port portion of a URL.)
+- define your api biz value
+- define your api metrics
+- articulate your api use cases
+- api schema model and best practice
 
-- The server responds with the Access-Control-Allow-Origin header if the request is valid.
-
-- Setting the Access-Control-Allow-Origin header to * allows cross-origin requests from any client; etting the Access-Control-Allow-Origin header to a specific origin value only allows cross-origin requests from that specific client.
 
 ### preflight request
 
