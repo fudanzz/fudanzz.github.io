@@ -23,7 +23,7 @@ header-img: "img/post-bg-01.jpg"
 - define your api biz value
 - define your api metrics
 - articulate your api use cases
-- api schema model and best practice
+- api schema model and documentation
 
 
 ### Rest API Design RuleBook
@@ -87,3 +87,6 @@ header-img: "img/post-bg-01.jpg"
 - Rule: A consistent form should be used to represent error responses
 
 #### 5. Client Concern
+- Rule: New URIs should be used to introduce new concepts
+- Rule: OAuth may be used to protect resources
+- Rule: CORS should be supported to provide multi-origin read/write access from JavaScript
