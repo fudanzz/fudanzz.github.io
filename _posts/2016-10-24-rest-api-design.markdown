@@ -35,6 +35,16 @@ header-img: "img/post-bg-01.jpg"
 - Rule: Underscores (_) should not be used in URIs
 - Rule: Lowercase letters should be preferred in URI paths
 - Rule: File extensions should not be included in URIs
+- Rule: Consistent subdomain names should be used for your APIs
+- Rule: Consistent subdomain names should be used for your client developer portal
+- Rule: When modeling an API’s resources, we can start with the some basic resource archetypes:document,collection,store and controller
+- Rule: A singular noun should be used for document names
+- Rule: A plural noun should be used for collection names
+- Rule: A plural noun should be used for store names
+- Rule: A verb or verb phrase should be used for controller names
+- Rule: CRUD function names should not be used in URIs
+- Rule: The query component of a URI may be used to filter collections or stores
+- Rule: The query component of a URI should be used to paginate collection or store results
 
 ### Helpful website
 
