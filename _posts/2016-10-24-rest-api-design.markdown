@@ -72,15 +72,18 @@ header-img: "img/post-bg-01.jpg"
 - Rule: 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed
 - Rule: 500 (“Internal Server Error”) should be used to indicate API malfunction
 
-#### 3. HTTP metadata Design
--
+#### 3. Metadata Design
+- Rule: Content-Type must be used
+- Rule: Content-Length should be used
+- Rule: Last-Modified should be used in responses
+- Rule: ETag should be used in responses
+- Rule: Cache-Control, Expires, and Date response headers should be used to encourage caching
+- Rule: Caching should be encouraged
 
+#### 4. Representation Design
+- Rule: JSON should be supported for resource representation
+- Rule: XML and other formats may optionally be used for resource representation
+- Rule: A consistent form should be used to represent errors
+- Rule: A consistent form should be used to represent error responses
 
-
-### Helpful website
-
-1, http://test-cors.org/
-
-2, http://enable-cors.org/
-
-3, https://www.html5rocks.com/en/tutorials/cors/
+#### 5. Client Concern
