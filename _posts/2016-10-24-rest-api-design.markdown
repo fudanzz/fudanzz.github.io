@@ -44,7 +44,20 @@ header-img: "img/post-bg-01.jpg"
 - Rule: A verb or verb phrase should be used for controller names
 - Rule: CRUD function names should not be used in URIs
 - Rule: The query component of a URI may be used to filter collections or stores
-- Rule: The query component of a URI should be used to paginate collection or store results
+- Rule: The query component of a URI should be used to paginate collection or store results (may accept more complex inputs via a request’s entity body instead of the URI’s query part)
+
+#### 2. HTTP Design
+- Rule: GET and POST must not be used to tunnel other request methods
+- Rule: GET must be used to retrieve a representation of a resource
+- Rule: HEAD should be used to retrieve response headers
+- Rule: PUT must be used to both insert and update a stored resource
+- Rule: PUT must be used to update mutable resources
+- Rule: POST must be used to create a new resource in a collection
+- Rule: POST must be used to execute controllers
+- Rule: DELETE must be used to remove a resource from its parent
+- Rule: OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
+
+
 
 ### Helpful website
 
