@@ -46,7 +46,7 @@ header-img: "img/post-bg-01.jpg"
 - Rule: The query component of a URI may be used to filter collections or stores
 - Rule: The query component of a URI should be used to paginate collection or store results (may accept more complex inputs via a request’s entity body instead of the URI’s query part)
 
-#### 2. HTTP Design
+#### 2. HTTP Request/Response Design
 - Rule: GET and POST must not be used to tunnel other request methods
 - Rule: GET must be used to retrieve a representation of a resource
 - Rule: HEAD should be used to retrieve response headers
@@ -56,6 +56,24 @@ header-img: "img/post-bg-01.jpg"
 - Rule: POST must be used to execute controllers
 - Rule: DELETE must be used to remove a resource from its parent
 - Rule: OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
+- Rule: 200 (“OK”) should be used to indicate nonspecific success
+- Rule: 200 (“OK”) must not be used to communicate errors in the response body
+- Rule: 201 (“Created”) must be used to indicate successful resource creation
+- Rule: 202 (“Accepted”) must be used to indicate successful start of an asynchronous action
+- Rule: 204 (“No Content”) should be used when the response body is intentionally empty
+- Rule: 400 (“Bad Request”) may be used to indicate nonspecific failure
+- Rule: 401 (“Unauthorized”) must be used when there is a problem with the client’s credentials
+- Rule: 403 (“Forbidden”) should be used to forbid access regardless of authorization state
+- Rule: 404 (“Not Found”) must be used when a client’s URI cannot be mapped to a resource
+- Rule: 405 (“Method Not Allowed”) must be used when the HTTP method is not supported
+- Rule: 406 (“Not Acceptable”) must be used when the requested media type cannot be served
+- Rule: 409 (“Conflict”) should be used to indicate a violation of resource state
+- Rule: 412 (“Precondition Failed”) should be used to support conditional operations
+- Rule: 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed
+- Rule: 500 (“Internal Server Error”) should be used to indicate API malfunction
+
+#### 3. HTTP metadata Design
+-
 
 
 
