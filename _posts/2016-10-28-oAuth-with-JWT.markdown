@@ -8,6 +8,20 @@ header-img: "img/post-bg-01.jpg"
 
 ### Spring API Overview
 
+http://self-issued.info/docs/draft-ietf-oauth-jwt-bearer.html
+
+
+http://www.cnblogs.com/xiekeli/p/5607107.html
+
+
+http://stackoverflow.com/questions/39239051/rs256-vs-hs256-whats-the-difference
+http://self-issued.info/docs/draft-ietf-oauth-jwt-bearer.html
+
+
+http://www.cnblogs.com/xiekeli/p/5607107.html
+
+
+http://stackoverflow.com/questions/39239051/rs256-vs-hs256-whats-the-difference
 
 ####basic server with express
 
