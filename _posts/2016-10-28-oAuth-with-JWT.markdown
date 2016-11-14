@@ -10,3 +10,9 @@ header-img: "img/post-bg-01.jpg"
 
 JSON Web Token (JWT) defines a container to transport data between interested parties in JSON. The ongoing work of the JWT specification group under IETF is available at https://datatracker.ietf.org/doc/draft-ietf-oauth-json-web-token/.
 jwt.io
+
+
+
+https://securedb.co/community/jwt-vs-jws-vs-jwe/
+
+https://bitbucket.org/connect2id/nimbus-jose-jwt/wiki/Home
