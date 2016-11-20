@@ -10,7 +10,7 @@ header-img: "img/post-bg-01.jpg"
 
 JSON Web Token (JWT) defines a container to transport data between interested parties in JSON. The ongoing work of the JWT specification group under IETF is available at
 
- https://datatracker.ietf.org/doc/draft-ietf-oauth-json-web-token/.
+ (https://datatracker.ietf.org/doc/draft-ietf-oauth-json-web-token/)
 
 In other words, a JWT claims (i.e., claims represented in JSON format) could be sent either as JWS structure or JWE structure (or both; more on that later) depending on what you are trying to achieve. So, when you are sending JWT to someone, it is essentially either a JWS payload or a JWE payload.
 
@@ -32,4 +32,4 @@ The JWE scheme encrypts the content instead of signing it. The content being enc
 The JOSE Header for a JWS can also be distinguished from the JOSE Header for a JWE by determining whether an "enc" (encryption algorithm) member exists. If the "enc" member exists, it is a JWE; otherwise, it is a JWS.
 
 
-Note: credit to [jwt-vs-jws-vs-jwe]. [jwt-vs-jws-vs-jwe] : https://securedb.co/community/jwt-vs-jws-vs-jwe/
+Note: credit to https://securedb.co/community/jwt-vs-jws-vs-jwe/
