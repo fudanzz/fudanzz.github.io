@@ -8,8 +8,6 @@ header-img: "img/post-bg-01.jpg"
 
 ## Build your first Rest API
 
-
-### Overview
 LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之前，我们先看一下，在不依赖loopback的情况下，我们是如何开发一个rest API；完了我们在看基于loopback，我们如何开发一个rest api. 本章我们通过比较学习的方式，来学习loopback的开始方式有如何不同，以及它有哪些更优秀的特性，能帮助我们进行快速开发。
 
 ### Sample Rest API Project
@@ -30,7 +28,7 @@ LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之
 
 3.安装项目依赖的第三方库，这里我们会用到express
 
-    npm install express --save
+    npm install express morgan body-parser cors mongoose lodash --save
 
 4.接下来我们会创建一个简单的目录结构，创建完之后，项目目录结构如下：
 
@@ -53,18 +51,18 @@ LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之
 
 5.定义项目的配置信息
 在server/config目录下，创建一个config.js文件。目前我们只需保存需要用到的mongoDB的链接信息。
-
+```javascript
     module.exports = {
     db: {
         url: 'mongodb://localhost/nodedb'
     }
     };
-
+```
 备注：例子中mongoDB跑在本地，使用默认监听端口27017,数据库名nodedb
 
 6.定义项目用到的middleware
 在server/middleware目录下，创建一个appMiddlware.js文件。这里我们需要定义项目用到的middleware.
-
+```javascript
     var morgan = require('morgan');
     var bodyParser = require('body-parser');
     var cors = require('cors');
@@ -79,10 +77,10 @@ LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之
         app.use(bodyParser.json());
         app.use(cors());
     };
-
+``
 7.api定义
 首先我们要在api目录里面创建一个入口文件api.js.作为整个项目api的入口，这里用到了express的Router组件。
-
+```javascript
     var router = require('express').Router();
 
     // api router will mount other routers
@@ -90,7 +88,7 @@ LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之
     router.use('/users', require('./user/userRoutes'));
 
     module.exports = router;
-
+```
 接着我们需要在api目录下面创建一个user目录。在这个user目录下，创建一下三个文件：
 
 * userModel.js
@@ -100,6 +98,7 @@ LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之
 * userRoutes.js  
 
 userModel.js 用来定义user的数据模型：
+
 ```javascript
     var mongoose = require('mongoose');
     var Schema = mongoose.Schema;
@@ -216,19 +215,75 @@ router.route('/')
 
 router.route('/:id')
     .get(controller.getOne)
-    .put(checkUser, controller.put)
-    .delete(checkUser, controller.delete)
+    .put(controller.put)
+    .delete(controller.delete)
 
 module.exports = router;
 
 ```
 
+8. Put All Together
 
-8.put all together
+在index.js文件里面，我们需要前面定义的middlware,config以及user api的定义串联起来，并定义一个全局的异常处理：
+
+```javascript
+var express = require('express');
+var app = express();
+
+var config = require('./server/config/config');
+var api = require('./server/api/api');
+
+// db.url is different depending on NODE_ENV
+require('mongoose').connect(config.db.url);
 
 
+// setup the app middlware
+require('./server/middleware/appMiddlware')(app);
+
+// setup the api
+app.use('/api', api);
+
+// set up global error handling
+app.use(function (err, req, res, next) {
+
+    console.error(err.stack);
+    res.status(500).send('Oops');
+});
+
+app.listen(config.port);
+console.log('server is listening on http://localhost:' + config.port);
 
 
+```
+9.Test Drive
 
+最后我们在本地启动这个express,并进行一些简单的测试：
+
+    node index.js
+
+接下来我们用curl命令来测试暴露的user rest api
+
+创建用户
+
+    curl -X POST -H "Content-Type: application/json" -d  '{"name":"","password":"12345"}' http://localhost:3000/api/users
+
+获取用户
+
+    curl -X GET http://localhost:3000/api/users/59a504539a8e4d43e2bb484b
+
+获取所有用户
+
+    curl -X GET http://localhost:3000/api/users
+
+修改用户
+
+    curl -X PUT -H "Content-Type: application/json" -d  '{"name":"phil","password":"77777"}' http://localhost:3000/api/users/59a50aee9ecb82447d1f72be
+
+删除用户
+
+    curl -X PUT http://localhost:3000/api/users/59a504539a8e4d43e2bb484b
+
+
+如果上述测试返回正常，那这样一个标准的rest api的例子我们就做完了，希望没有花费大家很多时间 ：）接下来我们就来看一下如何基于loopback构建上述的user rest api
 
 ### Build Rest API with LoopBack
