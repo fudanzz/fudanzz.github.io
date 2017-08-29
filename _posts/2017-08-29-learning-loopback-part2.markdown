@@ -6,7 +6,7 @@ author:     "Phil"
 header-img: "img/post-bg-01.jpg"
 ---
 
-## Build your first Rest API
+### Build your first Rest API
 
 LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之前，我们先看一下，在不依赖loopback的情况下，我们是如何开发一个rest API；完了我们在看基于loopback，我们如何开发一个rest api. 本章我们通过比较学习的方式，来学习loopback的开始方式有如何不同，以及它有哪些更优秀的特性，能帮助我们进行快速开发。
 
@@ -287,3 +287,88 @@ console.log('server is listening on http://localhost:' + config.port);
 如果上述测试返回正常，那这样一个标准的rest api的例子我们就做完了，希望没有花费大家很多时间 ：）接下来我们就来看一下如何基于loopback构建上述的user rest api.
 
 #### Build Rest API with LoopBack
+
+1,首先需要全局安装LoopBack的命令行工具
+
+    $ npm install -g loopback-cli
+
+2， 创建LoopBack项目
+
+```javascript
+    mkdir lb-rest
+    cd lb-rest
+    lb
+    ? What's the name of your application? lb-rest
+    ? Which version of LoopBack would you like to use? 2.x (long term support)
+    ? What kind of application do you have in mind? empty-server (An empty LoopBack API, without any configured models or datasources)
+```
+项目创建完了，会生成以下项目目录和文件：
+* client
+* node_modules
+* package.json
+* server
+
+关于项目目录文件的说明，会在后面提到。
+
+3, 创建项目数据源
+
+这里我们需要创建mongoDB的数据源
+
+    $ lb datasource
+    ? Enter the datasource name: mongoDB
+    ? Select the connector for mongoDB: MongoDB (supported by StrongLoop)
+    ? Connection String url to override other settings (eg: mongodb://username:password@hostname:port/database):
+    ? host: localhost
+    ? port: 27017
+    ? user:
+    ? password:
+    ? database: nodedb
+    ? Install loopback-connector-mongodb@^1.4 Yes
+
+4, 创建user数据模型
+```javascript
+    $ lb model
+    ? Enter the model name: user
+    ? Select the datasource to attach user to: mongoDB (mongodb)
+    ? Select model's base class PersistedModel
+    ? Expose user via the REST API? Yes
+    ? Custom plural form (used to build REST URL):
+    ? Common model or server only? server
+    Let's add some user properties now.
+
+    Enter an empty property name when done.
+    ? Property name: username
+    invoke   loopback:property
+    ? Property type: string
+    ? Required? Yes
+    ? Default value[leave blank for none]:
+
+    Let's add another user property.
+    Enter an empty property name when done.
+    ? Property name: password
+    invoke   loopback:property
+    ? Property type: string
+    ? Required? Yes
+    ? Default value[leave blank for none]:
+```
+5, 启动项目
+
+    $ node .
+    Web server listening at: http://0.0.0.0:3000
+    Browse your REST API at http://0.0.0.0:3000/explorer
+
+在浏览器端输入http://0.0.0.0:3000/explorer， 你就可以利用loopback提供的api explorer工具在网页端进行api的浏览以及简单的测试了。
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+#### Summary
+
+通过前面两个sample project的比较，你大概也可以和我一样，有如下几点的体会：
+对于第一个项目（基于express,但没有用loopback）而言：
+
+* 创建一个简单的CRUD 的api, 需要大量代码的编写
+* 如果针对多个数据模型的rest api开发，大量的增删改查代码其实是重复的
+* 项目框架的搭建需要从头开始，通过手工来完成
+* 开发出来的rest api 没有生成相关的在线文档以及简单的调试工具
+
+而基于LoopBack的项目针对上述问题，提供了非常好的解决方案，当然loopback作为一个成熟的，企业级的框架，它还有诸多的特性，让node开发人员收益。这些我们会在后面的章节一一展开。
