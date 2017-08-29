@@ -359,7 +359,7 @@ console.log('server is listening on http://localhost:' + config.port);
 
 在浏览器端输入http://0.0.0.0:3000/explorer， 你就可以利用loopback提供的api explorer工具在网页端进行api的浏览以及简单的测试了。
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of explorer](https://raw.githubusercontent.com/fudanzz/fudanzz.github.io/master/img/post/api-explorer.png)
 
 #### Summary
 
