@@ -10,10 +10,10 @@ header-img: "img/post-bg-01.jpg"
 
 LoopBack是一个优秀的开发rest api的node框架，在介绍它的特性之前，我们先看一下，在不依赖loopback的情况下，我们是如何开发一个rest API；完了我们在看基于loopback，我们如何开发一个rest api. 本章我们通过比较学习的方式，来学习loopback的开始方式有如何不同，以及它有哪些更优秀的特性，能帮助我们进行快速开发。
 
-### Sample Rest API Project
+#### Sample Rest API Project
 这里的samle project会演示如何将一张用户表的增删改查操作暴露为相应的rest api。后端的数据存储使用mongoDB,同时简单起见，这张用户表只有两个字段：用户名和密码。
 
-### Build Sample Rest API without LoopBack
+#### Build Sample Rest API without LoopBack
 
 如果你已经在本地安装了node环境，那我们先从创建一个node项目开始。
 
@@ -284,6 +284,6 @@ console.log('server is listening on http://localhost:' + config.port);
     curl -X PUT http://localhost:3000/api/users/59a504539a8e4d43e2bb484b
 
 
-如果上述测试返回正常，那这样一个标准的rest api的例子我们就做完了，希望没有花费大家很多时间 ：）接下来我们就来看一下如何基于loopback构建上述的user rest api
+如果上述测试返回正常，那这样一个标准的rest api的例子我们就做完了，希望没有花费大家很多时间 ：）接下来我们就来看一下如何基于loopback构建上述的user rest api.
 
-### Build Rest API with LoopBack
+#### Build Rest API with LoopBack
