@@ -10,9 +10,34 @@ header-img: "img/post-bg-01.jpg"
 
 这一章节我们会重点讲述loopback的几个核心概念，为熟练掌握loopback这个框架以及后面学习一些loopback的高级特性打下坚实基础。
 
+#### create loopback project
+
+在讲核心概念之前，我们先讲一下如何创建一个loopback项目。
+命令行的方式是最为简单的方式，为此你需要先全局安装一个loopback命令行工具
+```javascript
+$ npm install -g loopback-cli
+```
+
+执行一下命令来创建loopback项目：
+```javascript
+$ lb app <project-name>
+```
+上面的这个命令类似项目脚手架工具，会为你创建基本的项目目录结构：
+
+* client目录 ：存放前端相关的内容
+* common目录 ：存放前后端公共的model定义文件和js
+* server ： 存放服务器端的内容
+  * server.js
+  * config.json
+  * model-config.json
+  * datasources.json
+  * middleware.json
+  * component-config.json
+
 #### Core Concept
 
-掌握loopback框架,需要了解下面几个重点概念:
+掌握loopback框架,需要了解下面几个重点概念:middleware.json
+* component-config.json
 * model
 * data source ／connector
 * router
@@ -33,40 +58,81 @@ loopback框架里面提供一些了内建的model，比如用户，角色以及�
 
 **LoopBack model generator** 是推荐的创建model的方式，你可以通过命令行交互的方式创建你需要的model.
 
+下面是如何使用这个命令行工具的示例：
+在项目的根目录下，运行下面的命令创建一个account model. （这里默认你已经使用 lb project-name 生成了你的项目目录结构了）
+
 ```javascript
 $ lb model account
 ? Enter the model name: account
 ? Select the datasource to attach account to: db (memory)
-? Select model's base class PersistedModel
+? Select models base class PersistedModel
 ? Expose account via the REST API? Yes
 ? Custom plural form (used to build REST URL):
 ? Common model or server only? common
-Let's add some account properties now.
+Lets add some account properties now.
 
 Enter an empty property name when done.
 ? Property name: accountName
-   invoke   loopback:property
+   invoke  loopback:property
 ? Property type: string
 ? Required? No
 ? Default value[leave blank for none]:
 
-Let's add another account property.
+Lets add another account property.
 Enter an empty property name when done.
 ? Property name:
 ```
 
+Model创建成功之后，这个命令行工具会在项目目录创建以下文件：
+* /common/models/account.json 这是一个model定义文件，里面包含这个model的详细定义，比如字段名，属性，继承的父类等信息
+* /common/models/account.js 这是model Javascript文件，你可以在添加相关的业务逻辑或者对这个model进行扩展。
+
+除了上面两个新生成的文件，新加的model也会被添加到下面的文件中：
+* /server/model-config.json 这个是整个项目的model配置文件
+
+除了通过命令行的方式来创建model，loopback还提供了model discovery和 instance introspection的方式来创建model. 如果你的数据表已经有了，或者数据模型早就已经定义好了，那你可以考虑使用上面这两种方式来创建model. 关于这两种方式的详细描述，我们会在后面章节提到。
+
+最后loopback还提供了api的方式来创建model,下面是一个简单示例：
+```javascript
+
+var loopback = require('loopback');
+var app = loopback(); // Create an instance of LoopBack
+// Create an in memory data source
+var ds = loopback.createDataSource('memory');
+
+// Create a open model that doesn't require predefined properties
+var FormModel = ds.createModel('form');
+
+// Expose the model as REST APIs
+app.model(FormModel);
+app.use(loopback.rest());
+
+// Listen on HTTP requests
+app.listen(3000, function () {
+    console.log('The form application is ready at http://127.0.0.1:3000');
+});
+
+```
+上述代码仅仅创建了一个开发的model,即我们没有定义
 
 
-通过上面几种方式的演示，我们可以看到loopback model强大的地方是说
-提供多样的创建方式，一旦model定义好，相关的rest api就会自动暴露，省去了重复繁琐的工作，大大提升开发效率
+需要说明的，这里演示编程的方式创建model,是为了让大家对model有一个更为直观的感受，通过api的方式创建model不是常用的功能，另外API的方式，不会生成model定义文件，这对项目的后期维护可能会有一些影响。
+
+
+
+通过上面几种方式的演示，我们可以发现，一旦model定义好，相关的rest api就会自动暴露，省去了重复繁琐的工作，大大提升了开发效率。
 
 如果要进一步了解loopback model为何能够如此神奇的暴露rest API接口，我们需要了解data source 以及 connector.
 
 
 #### Data Source /Connector
+
 下面这张图解释了model与
 
 
 #### Routing
+
+
+
 
 #### Summary
