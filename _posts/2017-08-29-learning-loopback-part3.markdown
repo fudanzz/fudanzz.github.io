@@ -27,12 +27,12 @@ $ lb app <project-name>
 * client目录 ：存放前端相关的内容
 * common目录 ：存放前后端公共的model定义文件和js
 * server ： 存放服务器端的内容
-  * server.js
-  * config.json
-  * model-config.json
-  * datasources.json
-  * middleware.json
-  * component-config.json
+  * server.js : 应用入口文件
+  * config.json ： 应用主配置文件
+  * model-config.json ： 应用model配置文件
+  * datasources.json ： 应用datasources配置文件
+  * middleware.json ： 应用middleware配置文件
+  * component-config.json ： loopback组件配置文件
 
 #### Core Concept
 
@@ -113,17 +113,14 @@ app.listen(3000, function () {
 });
 
 ```
-上述代码仅仅创建了一个开发的model,即我们没有定义
+上述代码仅仅创建了一个开发的model,即我们没有定义任何的字段，你可以为这个model添加任何的字段； 当然你也可以定义model的字段，并且添加强约束检查.
 
 
 需要说明的，这里演示编程的方式创建model,是为了让大家对model有一个更为直观的感受，通过api的方式创建model不是常用的功能，另外API的方式，不会生成model定义文件，这对项目的后期维护可能会有一些影响。
 
-
-
 通过上面几种方式的演示，我们可以发现，一旦model定义好，相关的rest api就会自动暴露，省去了重复繁琐的工作，大大提升了开发效率。
 
 如果要进一步了解loopback model为何能够如此神奇的暴露rest API接口，我们需要了解data source 以及 connector.
-
 
 #### Data Source /Connector
 
