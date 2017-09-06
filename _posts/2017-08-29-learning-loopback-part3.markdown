@@ -7,27 +7,53 @@ header-img: "img/post-bg-01.jpg"
 ---
 
 ### LoopBack Core Concept
-这一章节我们会重点讲述loopback的几个核心概念，为数量掌握loopback这个框架以及后面学习一些loopback的高级应用打下坚实的基础。
+
+这一章节我们会重点讲述loopback的几个核心概念，为熟练掌握loopback这个框架以及后面学习一些loopback的高级特性打下坚实基础。
 
 #### Core Concept
-掌握loopback,需要了解下面几个重点概念:
+
+掌握loopback框架,需要了解下面几个重点概念:
 * model
 * data source ／connector
 * router
 
 
 #### Model
-Model是loopback框架里头最核心的概念，后面会讲到的data source以及connector都会围绕着model展开。Model本质上是一个javascript对象，是对后端的业务数据或者业务逻辑进行的抽象封装。通过操作model，实现与后端系统的交互，比如实现数据局的增删改查操作。
 
-loopback框架里面提供一些自带的model，比如用户，角色以及应用，你可以根据需要直接使用这些model，也可以基于现有的model来进行扩展；当然大部分情况下，我们会根据特定应用需要来定义自己的model。
+Model是loopback框架里头最核心的概念，后面会讲到的data source以及connector都会围绕着model展开。Model本质上是一个javascript对象，是对后端的业务数据或者业务逻辑进行的抽象封装。通过操作model，可以实现相关的业务逻辑或者与后端系统的交互，比如数据校验或者实现数据库表的增删改查操作。
 
-有下面几种方式来自定义model：
+loopback框架里面提供一些了内建的model，比如用户，角色以及应用，你可以根据需要直接使用这些model，也可以基于现有的model来进行扩展；当然大部分情况下，我们会根据特定应用需求来定义自己的model。
+
+你可以通过下面这几种方式来自定义model：
+
 * LoopBack model generator
 * model discovery
 * instance introspection
 * programing with loopback API
 
-LoopBack model generator是推荐的创建model的方式，你可以通过命令行交互的方式创建你的model.
+**LoopBack model generator** 是推荐的创建model的方式，你可以通过命令行交互的方式创建你需要的model.
+
+```javascript
+$ lb model account
+? Enter the model name: account
+? Select the datasource to attach account to: db (memory)
+? Select model's base class PersistedModel
+? Expose account via the REST API? Yes
+? Custom plural form (used to build REST URL):
+? Common model or server only? common
+Let's add some account properties now.
+
+Enter an empty property name when done.
+? Property name: accountName
+   invoke   loopback:property
+? Property type: string
+? Required? No
+? Default value[leave blank for none]:
+
+Let's add another account property.
+Enter an empty property name when done.
+? Property name:
+```
 
 
 
@@ -38,6 +64,7 @@ LoopBack model generator是推荐的创建model的方式，你可以通过命令
 
 
 #### Data Source /Connector
+下面这张图解释了model与
 
 
 #### Routing
