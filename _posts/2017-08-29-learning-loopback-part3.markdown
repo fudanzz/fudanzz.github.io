@@ -22,7 +22,7 @@ $ npm install -g loopback-cli
 ```javascript
 $ lb app <project-name>
 ```
-上面的这个命令类似项目脚手架工具，会为你创建基本的项目目录结构：
+上面的这个命令类似项目脚手架工具，会为你创建下面基本的项目目录结构：
 
 * client目录 ：存放前端相关的内容
 * common目录 ：存放前后端公共的model定义文件和js
@@ -36,7 +36,7 @@ $ lb app <project-name>
 
 #### Core Concept
 
-掌握loopback框架,需要了解下面几个重点概念:middleware.json
+掌握loopback框架,需要了解下面几个重点概念:
 * component-config.json
 * model
 * data source ／connector
