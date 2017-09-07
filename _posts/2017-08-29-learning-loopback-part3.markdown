@@ -122,14 +122,70 @@ app.listen(3000, function () {
 
 如果要进一步了解loopback model为何能够如此神奇的暴露rest API接口，我们需要了解data source 以及 connector.
 
-#### Data Source /Connector
+#### Data Source / Connector
 
-下面这张图解释了model与
+下面这张图解释了model与datasource以及connector之间的关系：
 
+![Image of explorer](https://raw.githubusercontent.com/fudanzz/fudanzz.github.io/master/img/post/dsource-connector.png)
+
+Datasource 抽象了后端系统，比如数据库，REST API, SOAP API等。于这些后端系统的交互，都通过datasouce这个抽象层来交互。你可能已经注意到，前面我们在定义model的时候，都需要绑定一个datasource.
+
+而datasource本身则通过不同的connector与后端系统交互。比如我要访问后端的mysql数据库，则需要一个mysql的connector. connector封装了与后端系统交互的细节，比如针对数据库表的增删改查。
+
+datasource/connector本质上一个ORM/ODM框架，无论后端系统是数据库，还是其它类型的服务，通过这个ORM/ODM 层，我们都可以方便的，通过操作对象的方式，来实现后端系统的访问。
+
+正因为datasource抽象了后端系统的访问，所以当我们把一个model与datasource绑定起来的时候，这个model具备了对后端系统增删改查的能力。
+
+下面我们看一下如何创建datasource 和 connector.
+
+
+
+
+
+
+
+
+
+
+
+
+为了进一步了解model，datasouce以及connector之间的关系，我们这里继续演示一下代码的方式来创建
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+至此，你应该对loopback最核心的三个概念：model, datasource和connector有了初步的了解，接下来我们看一下loopback框架另外一个重要的概念：Routing.
 
 #### Routing
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Summary
+
+通过学习上面loopback的核心概念，我们应该可以对loopback有了一个初步的了解。loopback本质上是结合了express,ORM 以及REST API的特性，使得我们开发一个企业node后端应用变得方便简单。
