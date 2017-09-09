@@ -40,7 +40,7 @@ $ lb app <project-name>
 * component-config.json
 * model
 * data source ／connector
-* router
+* routing and middleware
 
 
 #### Model
@@ -150,8 +150,26 @@ datasource/connector本质上一个ORM/ODM框架，无论后端系统是数据�
 
 
 为了进一步了解model，datasouce以及connector之间的关系，我们这里继续演示一下代码的方式来创建
-
-
+```javascript
+"initial:before": {
+  "loopback#favicon": {}
+},
+```
+```javascript
+"initial:before": {
+  "loopback#favicon": {}
+},
+```
+```javascript
+"initial:before": {
+  "loopback#favicon": {}
+},
+```
+```javascript
+"initial:before": {
+  "loopback#favicon": {}
+},
+```
 
 
 
@@ -167,23 +185,100 @@ datasource/connector本质上一个ORM/ODM框架，无论后端系统是数据�
 
 至此，你应该对loopback最核心的三个概念：model, datasource和connector有了初步的了解，接下来我们看一下loopback框架另外一个重要的概念：Routing.
 
-#### Routing
+#### Routing /middleware
 
+前面我们已经提到过，loopback基于express框架的，所以loopback的routing概念和express的routing包括middlware概念是一致的。
 
+另外loopback的routing又做了自己的扩展。大家知道在申明express的middleware的时候，是要考虑顺序的，如果不注意，这个比较容易出问题。loopback在这里引入了"phase"的概念。即通过显式的方式定义middleware的触发顺序。phase在这里可以理解为阶段的意思，loopback启动或者应用响应请求有不同的阶段，阶段是有顺序的，你可以在为不同的阶段申请不同的middleware,从而达到精确控制middleware的触发顺序。
 
+如果你通过前面命令行方式已经创建了loopback应用，在server目录下面有个middleware.json文件，这里面定义loopback的各个预设的phase,以及默认的middlewares申明。
 
+middleware.json文件里面的预设的phase名字是不能改的，不然会导致意外的问题。每个phase阶段的middleware定义是可以根据应用需要配置的。
 
+我们先来看看有哪些预设的phase:
 
+1, initial - 初始阶段是middleware可以运行的起点
 
+2, session - 这个阶段用来初始化会话
 
+3, auth - 这个阶段用来定义认证以及授权的动作
 
+4, parse - 解析http body
 
+5, routes - 这个阶段可以用来执行你定义的各种routes,包括你直接用express api定义的各种middleware;这里需要注意，你需要用loopback的API,才可以定义middleware在哪个phase执行，xpress api定义的各种middleware，默认只能在routes阶段被触发。
 
+6,files - 处理静态内容
 
+7,final - 定义全局错误处理的逻辑
 
+另外每个phase都有两个子阶段：
+* phase before
+* phase after
 
+让你可以对每个phase做到更细粒度的控制。
 
+回过头来，我们在看middleware.json里面的默认middleware定义：
 
+在initial before阶段，我定义个favicon middleware, 这里的loopback#favicon会被解析为：require('serve-favicon')
+
+```javascript
+"initial:before": {
+  "loopback#favicon": {}
+},
+```
+在initial阶段，我们看到compression,cors,helmet 这个几个middleware被依次申明：
+
+```javascript
+"initial": {
+   "compression": {},
+   "cors": {
+     "params": {
+       "origin": true,
+       "credentials": true,
+       "maxAge": 86400
+     }
+   },
+   "helmet#xssFilter": {},
+   "helmet#frameguard": {
+     "params": [
+       "deny"
+     ]
+   },
+   "helmet#hsts": {
+     "params": {
+       "maxAge": 0,
+       "includeSubdomains": true
+     }
+   },
+   "helmet#hidePoweredBy": {},
+   "helmet#ieNoOpen": {},
+   "helmet#noSniff": {},
+   "helmet#noCache": {
+     "enabled": false
+   }
+ },
+```
+在routes阶段，loopback自带的rest middleware 会被加载。这里的${restApiRoot}，引用的是定义在config.json里面的属性值。
+
+```javascript
+"routes": {
+  "loopback#rest": {
+    "paths": [
+      "${restApiRoot}"
+    ]
+  }
+},
+```
+最后在final阶段，我们看到urlNotFound和strong-error-handler这两个用来做异常处理的middleware被注册进来
+
+```javascript
+"final": {
+  "loopback#urlNotFound": {}
+},
+"final:after": {
+  "strong-error-handler": {}
+
+```
 
 
 #### Summary
