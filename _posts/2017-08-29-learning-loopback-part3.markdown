@@ -37,7 +37,7 @@ $ lb app <project-name>
 #### Core Concept
 
 掌握loopback框架,需要了解下面几个重点概念:
-* component-config.json
+
 * model
 * data source ／connector
 * routing and middleware
@@ -138,50 +138,80 @@ datasource/connector本质上一个ORM/ODM框架，无论后端系统是数据�
 
 下面我们看一下如何创建datasource 和 connector.
 
+通过loopback命令行的方式是创建datasource的首选方式
 
-
-
-
-
-
-
-
-
-
-
-为了进一步了解model，datasouce以及connector之间的关系，我们这里继续演示一下代码的方式来创建
 ```javascript
-"initial:before": {
-  "loopback#favicon": {}
-},
+$ lb datasource
 ```
+下面是创建一个mongoDB datasource的示例：
+
 ```javascript
-"initial:before": {
-  "loopback#favicon": {}
-},
+? Enter the datasource name: notesdb
+? Select the connector for notesdb: MongoDB (supported by StrongLoop)
+? Connection String url to override other settings (eg: mongodb://username:password@hostname:
+port/database):
+? host: localhost
+? port: 27017
+? user:
+? password:
+? database: mongodb
+? Install loopback-connector-mongodb@^1.4 Yes
+
 ```
+我们看到最后，命令行工具会提示安装相应的connector. 这里安装的是访问mongoDB的connector.
+
+connector安装完毕，检查server/dataources.json这个文件，你会发现mongoDB的相关参数定义被添加了进来。你可以直接在这里对已有的datasource进行修改，或者删除。
+
 ```javascript
-"initial:before": {
-  "loopback#favicon": {}
-},
+"notesdb": {
+  "host": "localhost",
+  "port": 27017,
+  "url": "",
+  "database": "mongodb",
+  "password": "",
+  "name": "notesdb",
+  "user": "",
+  "connector": "mongodb"
+}
 ```
+
+为了进一步了解model，datasouce以及connector之间的关系，我们这里也看一下如何通过loopback api的方式来创建datasource以及connector.
+
 ```javascript
-"initial:before": {
-  "loopback#favicon": {}
-},
+var loopback = require('loopback');
+var app = loopback(); // Create an instance of LoopBack
+
+var dataSourceConfig = {
+    connector: require('loopback-connector-mongodb'),
+    host: 'localhost',
+    port: 27017,
+    database: 'nodedb'
+};
+
+//创建datasouce
+var dataSource = app.dataSource('ds', dataSourceConfig);
+
+var Note = dataSource.createModel('note', {
+    title: String,
+    content: String,
+    approved: Boolean
+});
+
+// Expose the model as REST APIs
+app.model(Note);
+app.use(loopback.rest());
+
+// Listen on HTTP requests
+app.listen(3000, function () {
+    console.log('The form application is ready at http://127.0.0.1:3000');
+});
 ```
 
+创建一个新的datasource, 除了提供相关的连接参数，比如host,port等，最重要的是必须要指定一个connector,因为datasource 是通过connector与后端系统交互的。
 
+有了datasource,你就可以定义自己需要的model. 并将这个model注册到loopback app里面，你就可以对这个model进行增删改查操作了。
 
-
-
-
-
-
-
-
-
-
+loopback自身以及社区提供了诸多高质量的connector,另外你也可以实现自己的connector，如何开发定制自己的conecctor,这个将会在后面章节讲到。
 
 至此，你应该对loopback最核心的三个概念：model, datasource和connector有了初步的了解，接下来我们看一下loopback框架另外一个重要的概念：Routing.
 

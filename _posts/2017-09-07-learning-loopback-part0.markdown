@@ -12,4 +12,4 @@ header-img: "img/post-bg-01.jpg"
 
 如果说教别人是学习某样东西的最好方式，那这也是本系列的一个初衷
 
-未待扬鞭自奋蹄
+father,husband and software engineer
