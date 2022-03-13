@@ -22,3 +22,7 @@ paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
 gems: [jekyll-paginate, jekyll-feed]
+
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-architect
